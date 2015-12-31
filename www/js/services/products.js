@@ -14,6 +14,10 @@ app.factory('Products', function(FURL, Auth, $firebaseArray) {
       return products;
     },
 
+    fetchAll : function() {
+      return products.$loaded();
+    },
+
     saveProduct : function(product, image) {
       var newProduct = {
         seller_image: Auth.user.profile.gravatar,

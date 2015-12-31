@@ -1,5 +1,9 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <ion-item class="list card" ng-repeat="product in products | reverse">
       <div class="item item-avatar">
         <img src="{{product.seller_image}}">

@@ -8,5 +8,15 @@ app .controller('DashCtrl', function($scope, Products) {
 
   $scope.products = Products.all();
 
-  console.log('the producs ', $scope.products);
+  $scope.doRefresh = function() {
+    Products.fetchAll()
+      .then(function(products) {
+        $scope.products = products;
+      })
+      .finally(function(){
+        $scope.$broadcast('scroll.refreshComplete');
+        console.log($scope.products);
+      });
+  };
+
 });
